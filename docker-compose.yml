@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  arena:
+    build:
+      context: .
+      dockerfile: docker/arena/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: always
+
+  swarm_a:
+    build:
+      context: .
+      dockerfile: docker/swarm_a/Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: always
+
+  swarm_b:
+    build:
+      context: .
+      dockerfile: docker/swarm_b/Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: always
+
+  judge:
+    build:
+      context: .
+      dockerfile: docker/judge/Dockerfile
+    ports:
+      - "8003:8003"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: always 
