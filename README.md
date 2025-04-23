@@ -1,6 +1,6 @@
 # Debate Duel
 
-A system for conducting AI debates with strategic team-based argument generation.
+A system for running strategic, team-based AI debates, where agents generate arguments across multiple turns. An LLM-as-a-Judge evaluates each round and selects winners, enabling the creation of datasets for supervised fine-tuning or RLHF via Outcome Reward Modeling or Policy Reward Modeling.
 
 ## Overview
 
@@ -21,7 +21,7 @@ The new team-based approach uses multiple specialized agents working together to
 4. **Writer Agent**: Crafts the final debate argument
 5. **Verifier Agent**: Checks the argument for soundness and identifies weaknesses
 
-This collaborative approach allows for more strategic, well-researched, and persuasive arguments compared to a single-agent approach.
+This collaborative approach allows for more strategic, well-researched, and persuasive arguments compared to a single-agent approach, as the team of agents prepares an argument conditioned on anticipated counter arguments and their potential weaknesses.
 
 ## Getting Started
 
@@ -48,12 +48,48 @@ This collaborative approach allows for more strategic, well-researched, and pers
    export OPENAI_API_KEY=your_api_key_here
    ```
 
-### Running a Debate
+### Running a Debate from the Command Line
 
-You can run a test debate with:
+You can run a test argument with the below code, replacing your topic in the quotations:
 
 ```
-python -m debate_duel.agents.team_debater.client --topic "Your debate topic" --stance pro --verbose
+python -m debate_duel.agents.team_debater.client --topic "Should open-source AI be regulated?" --stance pro --verbose
+```
+
+Output will appear beginning with the research process undertaken by the team of agents:
+
+```
+Generating PRO argument for topic: Should open-source AI models be regulated?
+
+================================================================================
+                  STARTING ARGUMENT GENERATION FOR PRO STANCE                   
+================================================================================
+
+🎯 TOPIC: Should open-source AI models be regulated?
+
+🗺️ PLAN:
+
+OVERALL_APPROACH: Advocate for the regulation of open-source AI models to ensure ethical standards, safety, and accountability in their development and deployment.
+
+POINTS:
+  1. Regulation is necessary to prevent misuse of open-source AI models, which can lead to harmful consequences such as misinformation, privacy violations, and autonomous weaponization.
+  2. Establishing ethical guidelines will promote responsible innovation, ensuring that AI technologies benefit society while minimizing risks associated with their deployment.
+  3. Regulation will enhance public trust in AI technologies by ensuring transparency and accountability in their development and use, addressing concerns about bias and discrimination.
+  4. A regulatory framework can foster collaboration between developers, policymakers, and stakeholders, creating a balanced approach to innovation and safety in AI development.
+
+OPPONENT_WEAKNESSES:
+  1. The opponents may argue that regulation stifles innovation; however, historical examples show that well-defined regulations can actually promote responsible innovation and public confidence.
+  2. They may claim that open-source models are inherently safe due to community oversight, but this overlooks the potential for malicious actors to exploit vulnerabilities without proper guidelines.
+  3. The assertion that market forces alone can ensure safety is flawed, as it neglects the potential for economic incentives to prioritize profit over ethical considerations.
+
+ANTICIPATED_COUNTERARGUMENTS:
+  1. Opponents may argue that regulation will hinder the rapid development of AI technologies, suggesting that innovation thrives in an unregulated environment.
+  2. They might claim that the existing community oversight of open-source projects provides sufficient checks and balances without the need for formal regulation.
+  3. Another counterargument could be that regulation could create barriers for smaller developers and startups, leading to a monopolization of the AI field by larger corporations.
+  .
+  .
+  .
+
 ```
 
 ## Project Structure
@@ -68,7 +104,3 @@ python -m debate_duel.agents.team_debater.client --topic "Your debate topic" --s
     - `manager.py`: Coordinates the agent workflow
     - `printer.py`: Utilities for debug output
   - `judge/`: Debate judging agents
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
