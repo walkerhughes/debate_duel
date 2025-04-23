@@ -1,6 +1,9 @@
-# Debate Duel
+# Agent Debate Duel
 
-A system for running strategic, team-based AI debates, where agents generate arguments across multiple turns. An LLM-as-a-Judge evaluates each round and selects winners, enabling the creation of datasets for supervised fine-tuning or RLHF via Outcome Reward Modeling or Policy Reward Modeling.
+An environment for hosting strategic, team-based debates, where agents generate arguments across multiple turns. Agent teams use a deep-research inspired workflow to plan an approach to craft their argument, anticipate the opposing team's counter arguments, and refine their strategy across multi-turn debates. An LLM-as-a-Judge evaluates each round and selects winners, enabling the creation of datasets for supervised fine-tuning/RLHF via Outcome Reward Modeling or Policy Reward Modeling.
+
+Note: When creating synthetic data generated this way, take precaution to ensure that the model learns strategic argumentation patterns rather than domain-specific content — since winning arguments may be tied to hot-button topics, fine-tuning on this data without careful curation could inadvertently encode topical biases rather than generalizable reasoning skills.
+
 
 ## Overview
 
