@@ -5,7 +5,7 @@ from debate_duel.settings.constants import OPENAI_MODEL, OPENAI_CLIENT
 from debate_duel.shared.schemas import ArgumentRequest, Turn, Stance
 
 
-class SwarmAgent:
+class DebateAgent:
     def __init__(self):
         self.client = OPENAI_CLIENT
     

@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 from debate_duel.shared.schemas import ArgumentRequest
-from debate_duel.agents.swarm import SwarmAgent
+from debate_duel.agents.swarm import DebateAgent
 
 
 class ArgumentResponse(BaseModel):
@@ -10,7 +10,7 @@ class ArgumentResponse(BaseModel):
 
 
 app = FastAPI()
-swarm_agent = SwarmAgent()
+swarm_agent = DebateAgent()
 
 
 @app.post("/generate_argument", response_model=ArgumentResponse)
